@@ -7,8 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "FeedViewController.h"
+#import "GamesListViewController.h"
+#import <Parse/Parse.h>
+#import "SAFTabBarController.h"
 
 @interface AppDelegate ()
+
+@property(nonatomic,strong) UITabBarController* tabCtrlr;
 
 @end
 
@@ -17,6 +23,33 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    [Parse setApplicationId:@"bEnm8kxhKPWBYVXmOviBTwEyJkVRa3BmGFP53kFT"
+                  clientKey:@"KsU0HGMCsOeYIB6us17VEQuhMKsrpgGBQs8CxLC9"];
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    _tabCtrlr = [[SAFTabBarController alloc] init];
+    
+    UITabBarItem* feedBtn = [[UITabBarItem alloc] initWithTitle:@"Feed" image:[UIImage imageNamed:@"feedIcon"] tag:0];
+    UITabBarItem* gamesListBtn = [[UITabBarItem alloc] initWithTitle:@"Games" image:[UIImage imageNamed:@"gamesListIcon"] tag:1];
+
+    FeedViewController* feedCtlr = [[FeedViewController alloc] init];
+    feedCtlr.tabBarItem = feedBtn;
+    
+    GamesListViewController* gamesListCtrlr = [[GamesListViewController alloc] init];
+    gamesListCtrlr.tabBarItem = gamesListBtn;
+    
+    _tabCtrlr.viewControllers = @[feedCtlr, gamesListCtrlr];
+    
+    [self.window setRootViewController:_tabCtrlr];
+    
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
