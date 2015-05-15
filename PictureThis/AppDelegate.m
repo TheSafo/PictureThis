@@ -38,12 +38,22 @@
     UITabBarItem* gamesListBtn = [[UITabBarItem alloc] initWithTitle:@"Games" image:[UIImage imageNamed:@"gamesListIcon"] tag:1];
 
     FeedViewController* feedCtlr = [[FeedViewController alloc] init];
-    feedCtlr.tabBarItem = feedBtn;
+    feedCtlr.title = @"Winners' Feed";
+//    feedCtlr.tabBarItem = feedBtn;
+    
     
     GamesListViewController* gamesListCtrlr = [[GamesListViewController alloc] init];
-    gamesListCtrlr.tabBarItem = gamesListBtn;
+    gamesListCtrlr.title = @"Available Games";
+//    gamesListCtrlr.tabBarItem = gamesListBtn;
     
-    _tabCtrlr.viewControllers = @[feedCtlr, gamesListCtrlr];
+    UINavigationController* leftCtrlr = [[UINavigationController alloc] initWithRootViewController:feedCtlr];
+    leftCtrlr.tabBarItem = feedBtn;
+    leftCtrlr.navigationBar.barTintColor = [UIColor greenColor];
+    UINavigationController* rightCtrlr = [[UINavigationController alloc] initWithRootViewController:gamesListCtrlr];
+    rightCtrlr.tabBarItem = gamesListBtn;
+    rightCtrlr.navigationBar.barTintColor = [UIColor greenColor];
+    
+    _tabCtrlr.viewControllers = @[leftCtrlr , rightCtrlr];
     
     [self.window setRootViewController:_tabCtrlr];
     

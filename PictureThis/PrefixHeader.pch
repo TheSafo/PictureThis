@@ -1,0 +1,48 @@
+//
+//  PrefixHeader.pch
+//  SoundBomber
+//
+//  Created by Jake Saferstein on 4/6/15.
+//  Copyright (c) 2015 Jake Saferstein. All rights reserved.
+//
+
+#ifndef SoundBomber_PrefixHeader_pch
+#define SoundBomber_PrefixHeader_pch
+
+
+//#import <JFParseFBFriends/JFParseFBFriends.h>
+#import <Parse/Parse.h>
+#import "PFFacebookUtils.h"
+#import <AVFoundation/AVFoundation.h>
+//#import <MMWormhole/MMWormhole.h>
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+//#import <iCarousel/iCarousel.h>
+//#import <RS3DSegmentedControl/RS3DSegmentedControl.h>
+#import <Blockskit/UIAlertView+BlocksKit.h>
+#import <Pop/POP.h>
+#import "SAFParseHelper.h"
+//#import "StoreManager.h"
+//#import "AdSingleton.h"
+
+
+//#define ADS_ON ![StoreManager sharedInstance].adsPurchased
+//#define ADS_ON 0
+
+
+
+// DLog is almost a drop-in replacement for NSLog
+// DLog();
+// DLog(@"here");
+// DLog(@"value: %d", x);
+#ifdef DEBUG
+#	define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#	define DLog(...)
+#endif
+
+// ALog always displays output regardless of the DEBUG setting
+#define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+
+#endif

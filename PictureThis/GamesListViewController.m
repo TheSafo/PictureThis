@@ -10,30 +10,80 @@
 
 @interface GamesListViewController ()
 
+@property (nonatomic) UITableView* tableView;
+@property (nonatomic) NSMutableArray* gamesList;
+@property (nonatomic) BOOL doneLoggingIn;
+
+
 @end
 
 @implementation GamesListViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor greenColor];
+-(instancetype) init {
+    if(self = [super init]) {
+        
+        
+        if([PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) /* If logged in */ {
+            
+            UIImageView* fb = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"facebookLoading.png"]];
+            fb.frame = CGRectMake(self.view.frame.size.width/2 - 50, self.view.frame.size.height/2 - 150, 100, 100);
+            [self.view addSubview:fb];
+            
+            UIActivityIndicatorView* test = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+            test.frame = CGRectMake(self.view.frame.size.width/2 - 50, self.view.frame.size.height/2 - 50, 100, 100);
+            test.color = [UIColor blackColor];
+            [self.view addSubview:test];
+            [test startAnimating];
+            
+            [[SAFParseHelper sharedInstance] loginWithBlock:^(NSMutableArray *friendArrs) {
+                //Move on
+                if(_doneLoggingIn)
+                {
+                    [self.tableView reloadData];
+                    return;
+                }
+                
+//                [self showTableViewWithArrs:friendArrs];
+                _doneLoggingIn = YES;
+            }];
+            
+            
+        }
+        else /* Set up the login screen */
+        {
+            UIImageView* fb = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"facebookLoading.png"]];
+            fb.frame = CGRectMake(self.view.frame.size.width/2 - 50, self.view.frame.size.height/2 - 150, 100, 100);
+            [self.view addSubview:fb];
+            
+            
+            UIButton* login = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            login.frame = CGRectMake(self.view.frame.size.width/4, fb.frame.origin.y + fb.frame.size.height + 20, self.view.frame.size.width/2, 50);
+            login.backgroundColor = [UIColor whiteColor];
+            login.layer.cornerRadius = 10;
+            [login setTitle:@"Connect to Facebook" forState:UIControlStateNormal];
+            
+            [self.view addSubview:login];
+            [login addTarget:self action:@selector(loginPressed) forControlEvents:UIControlEventTouchUpInside];
+        }
+    }
 
+    return self;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)loginPressed
+{
+    
 }
+//
+//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    
+//}
 
-/*
-#pragma mark - Navigation
+//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    
+//}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
