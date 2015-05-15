@@ -27,9 +27,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
+    [Parse enableLocalDatastore];
     [Parse setApplicationId:@"bEnm8kxhKPWBYVXmOviBTwEyJkVRa3BmGFP53kFT"
                   clientKey:@"KsU0HGMCsOeYIB6us17VEQuhMKsrpgGBQs8CxLC9"];
-    
+    [PFFacebookUtils initializeFacebook];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     _tabCtrlr = [[SAFTabBarController alloc] init];
@@ -61,6 +62,15 @@
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [FBAppCall handleOpenURL:url
+                  sourceApplication:sourceApplication
+                        withSession:[PFFacebookUtils session]];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

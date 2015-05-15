@@ -10,7 +10,7 @@
 #define SoundBomber_PrefixHeader_pch
 
 
-//#import <JFParseFBFriends/JFParseFBFriends.h>
+#import <JFParseFBFriends/JFParseFBFriends.h>
 #import <Parse/Parse.h>
 #import "PFFacebookUtils.h"
 #import <AVFoundation/AVFoundation.h>
