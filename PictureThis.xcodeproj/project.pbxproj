@@ -13,6 +13,8 @@
 		4343E2C91B052D5E0026896F /* feedIcon3X.png in Resources */ = {isa = PBXBuildFile; fileRef = 4343E2C51B052D5E0026896F /* feedIcon3X.png */; };
 		4343E2CA1B052D5E0026896F /* gamesListIcon2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 4343E2C61B052D5E0026896F /* gamesListIcon2X.png */; };
 		4343E2CB1B052D5E0026896F /* gamesListIcon3X.png in Resources */ = {isa = PBXBuildFile; fileRef = 4343E2C71B052D5E0026896F /* gamesListIcon3X.png */; };
+		43AB20A31B06B9F400CE2554 /* facebookLoading.png in Resources */ = {isa = PBXBuildFile; fileRef = 43AB20A21B06B9F400CE2554 /* facebookLoading.png */; };
+		43AB20A61B06BB9000CE2554 /* FirstTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AB20A51B06BB9000CE2554 /* FirstTimeViewController.m */; };
 		43B566271ACE3C980045E61E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B566261ACE3C980045E61E /* main.m */; };
 		43B5662A1ACE3C980045E61E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B566291ACE3C980045E61E /* AppDelegate.m */; };
 		43B566351ACE3C980045E61E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B566341ACE3C980045E61E /* Images.xcassets */; };
@@ -43,6 +45,9 @@
 		4343E2C51B052D5E0026896F /* feedIcon3X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feedIcon3X.png; sourceTree = "<group>"; };
 		4343E2C61B052D5E0026896F /* gamesListIcon2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamesListIcon2X.png; sourceTree = "<group>"; };
 		4343E2C71B052D5E0026896F /* gamesListIcon3X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamesListIcon3X.png; sourceTree = "<group>"; };
+		43AB20A21B06B9F400CE2554 /* facebookLoading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookLoading.png; sourceTree = "<group>"; };
+		43AB20A41B06BB9000CE2554 /* FirstTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTimeViewController.h; sourceTree = "<group>"; };
+		43AB20A51B06BB9000CE2554 /* FirstTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTimeViewController.m; sourceTree = "<group>"; };
 		43B566211ACE3C980045E61E /* PictureThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureThis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B566251ACE3C980045E61E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43B566261ACE3C980045E61E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -122,6 +127,8 @@
 			children = (
 				43B566281ACE3C980045E61E /* AppDelegate.h */,
 				43B566291ACE3C980045E61E /* AppDelegate.m */,
+				43AB20A41B06BB9000CE2554 /* FirstTimeViewController.h */,
+				43AB20A51B06BB9000CE2554 /* FirstTimeViewController.m */,
 				4343E2C11B052C6E0026896F /* SAFTabBarController.h */,
 				4343E2C21B052C6E0026896F /* SAFTabBarController.m */,
 				43E352D61ACF2D8C001D0560 /* FeedViewController.h */,
@@ -170,6 +177,7 @@
 		43F2D9651AD06157005FE1CA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				43AB20A21B06B9F400CE2554 /* facebookLoading.png */,
 				4343E2C41B052D5E0026896F /* feedIcon2X.png */,
 				4343E2C51B052D5E0026896F /* feedIcon3X.png */,
 				4343E2C61B052D5E0026896F /* gamesListIcon2X.png */,
@@ -275,6 +283,7 @@
 				4343E2CA1B052D5E0026896F /* gamesListIcon2X.png in Resources */,
 				4343E2CB1B052D5E0026896F /* gamesListIcon3X.png in Resources */,
 				43B566381ACE3C980045E61E /* LaunchScreen.xib in Resources */,
+				43AB20A31B06B9F400CE2554 /* facebookLoading.png in Resources */,
 				43B566351ACE3C980045E61E /* Images.xcassets in Resources */,
 				43F2D9691AD06157005FE1CA /* gamesListIcon.png in Resources */,
 				43F2D9681AD06157005FE1CA /* feedIcon.png in Resources */,
@@ -330,6 +339,7 @@
 			files = (
 				43E352DB1ACF2DA7001D0560 /* GamesListViewController.m in Sources */,
 				43B5662A1ACE3C980045E61E /* AppDelegate.m in Sources */,
+				43AB20A61B06BB9000CE2554 /* FirstTimeViewController.m in Sources */,
 				43E352D81ACF2D8C001D0560 /* FeedViewController.m in Sources */,
 				4343E2C31B052C6E0026896F /* SAFTabBarController.m in Sources */,
 				43EC49491B0662DF009DD2E3 /* Singleton.m in Sources */,

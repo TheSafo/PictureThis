@@ -7,14 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import "FeedViewController.h"
-#import "GamesListViewController.h"
-#import <Parse/Parse.h>
-#import "SAFTabBarController.h"
+#import "FirstTimeViewController.h"
 
 @interface AppDelegate ()
-
-@property(nonatomic,strong) UITabBarController* tabCtrlr;
 
 @end
 
@@ -33,34 +28,12 @@
     [PFFacebookUtils initializeFacebook];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    _tabCtrlr = [[SAFTabBarController alloc] init];
     
-    UITabBarItem* feedBtn = [[UITabBarItem alloc] initWithTitle:@"Feed" image:[UIImage imageNamed:@"feedIcon"] tag:0];
-    UITabBarItem* gamesListBtn = [[UITabBarItem alloc] initWithTitle:@"Games" image:[UIImage imageNamed:@"gamesListIcon"] tag:1];
-
-    FeedViewController* feedCtlr = [[FeedViewController alloc] init];
-    feedCtlr.title = @"Winners' Feed";
-//    feedCtlr.tabBarItem = feedBtn;
-    
-    
-    GamesListViewController* gamesListCtrlr = [[GamesListViewController alloc] init];
-    gamesListCtrlr.title = @"Available Games";
-//    gamesListCtrlr.tabBarItem = gamesListBtn;
-    
-    UINavigationController* leftCtrlr = [[UINavigationController alloc] initWithRootViewController:feedCtlr];
-    leftCtrlr.tabBarItem = feedBtn;
-    leftCtrlr.navigationBar.barTintColor = [UIColor greenColor];
-    UINavigationController* rightCtrlr = [[UINavigationController alloc] initWithRootViewController:gamesListCtrlr];
-    rightCtrlr.tabBarItem = gamesListBtn;
-    rightCtrlr.navigationBar.barTintColor = [UIColor greenColor];
-    
-    _tabCtrlr.viewControllers = @[leftCtrlr , rightCtrlr];
-    
-    [self.window setRootViewController:_tabCtrlr];
+    FirstTimeViewController* rootCont = [[FirstTimeViewController alloc] init];
+    [self.window setRootViewController:rootCont];
     
     
     [self.window makeKeyAndVisible];
-    
     return YES;
 }
 

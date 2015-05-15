@@ -26,9 +26,7 @@
 //#import "AdSingleton.h"
 
 
-//#define ADS_ON ![StoreManager sharedInstance].adsPurchased
-//#define ADS_ON 0
-
+#define FACEBOOK_BLUE [UIColor colorWithRed:59.0/255.0 green:89.0/255.0 blue:152.0/255.0 alpha:1]
 
 
 // DLog is almost a drop-in replacement for NSLog
