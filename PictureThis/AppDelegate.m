@@ -7,7 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "FirstTimeViewController.h"
+#import "LoginViewController.h"
+#import "SAFTabBarController.h"
+#import "FeedViewController.h"
+#import "GamesListViewController.h"
+
 
 @interface AppDelegate ()
 
@@ -29,9 +33,52 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     
-    FirstTimeViewController* rootCont = [[FirstTimeViewController alloc] init];
-    [self.window setRootViewController:rootCont];
+//    FirstTimeViewController* rootCont = [[FirstTimeViewController alloc] init];
     
+    if([PFUser currentUser]) {
+
+        [[SAFParseHelper sharedInstance] updateDataWithBlock:^(NSMutableArray *games) {
+            
+            SAFTabBarController* tabCtrlr = [[SAFTabBarController alloc] init];
+            
+            GamesListViewController* gamesListCtrlr = [[GamesListViewController alloc] initWithGames:games];
+            
+            UITabBarItem* feedBtn = [[UITabBarItem alloc] initWithTitle:@"Feed" image:[UIImage imageNamed:@"feedIcon"] tag:0];
+            UITabBarItem* gamesListBtn = [[UITabBarItem alloc] initWithTitle:@"Games" image:[UIImage imageNamed:@"gamesListIcon"] tag:1];
+            
+            FeedViewController* feedCtlr = [[FeedViewController alloc] init];
+            feedCtlr.title = @"Winners' Feed";
+            //    feedCtlr.tabBarItem = feedBtn;
+            
+            
+            gamesListCtrlr.title = @"Available Games";
+            //    gamesListCtrlr.tabBarItem = gamesListBtn;
+            
+            UINavigationController* leftCtrlr = [[UINavigationController alloc] initWithRootViewController:feedCtlr];
+            leftCtrlr.tabBarItem = feedBtn;
+            leftCtrlr.navigationBar.barTintColor = [UIColor greenColor];
+            UINavigationController* rightCtrlr = [[UINavigationController alloc] initWithRootViewController:gamesListCtrlr];
+            rightCtrlr.tabBarItem = gamesListBtn;
+            rightCtrlr.navigationBar.barTintColor = [UIColor greenColor];
+            
+            tabCtrlr.viewControllers = @[leftCtrlr , rightCtrlr];
+            
+            [self.window setRootViewController:tabCtrlr];
+        }];
+    }
+    else {
+        
+        UIPageViewController* rootCont = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationVertical options:nil];
+        
+        LoginViewController* login = [[LoginViewController alloc] init];
+        
+        
+        [rootCont setViewControllers:@[login] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+            
+        }];
+        
+        [self.window setRootViewController:rootCont];
+    }
     
     [self.window makeKeyAndVisible];
     return YES;

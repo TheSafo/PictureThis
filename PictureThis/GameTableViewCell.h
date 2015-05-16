@@ -1,5 +1,5 @@
 //
-//  FirstTimeViewController.h
+//  GameTableViewCell.h
 //  PictureThis
 //
 //  Created by Jake Saferstein on 5/15/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstTimeViewController : UITabBarController
+@interface GameTableViewCell : UITableViewCell
 
 @end

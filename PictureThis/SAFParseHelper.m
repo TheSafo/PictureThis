@@ -43,7 +43,7 @@ SINGLETON_IMPL(SAFParseHelper);
 
 - (void)getGamesFromFriendsList:(NSArray*) friends withBlock:(void (^)(NSMutableArray* games))gamesList
 {
-    
+    gamesList(friends);
 }
 
 

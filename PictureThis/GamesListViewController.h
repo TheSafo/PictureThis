@@ -10,4 +10,8 @@
 
 @interface GamesListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+-(instancetype) initWithGames:(NSMutableArray *)games;
+
+-(void)updateGamesList: (NSMutableArray* )games;
+
 @end
